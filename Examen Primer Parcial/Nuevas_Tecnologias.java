@@ -10,17 +10,31 @@ public class Nuevas_Tecnologias{
             System.out.println("2. Calcular volumen de dos figuras");
             System.out.println("3. Salir");
         int opcion = sc.nextInt();
-
+        sc.nextLine();
         switch (opcion){
 
-                case 1:  System.out.println("Ingrese sus datos");       
-                DatosPersonales miDatos = new DatosPersonales();
+                case 1:  System.out.println("Ingrese sus datos"); 
+
+                    System.out.println("Ingresa tu/s nombre/s");
+                    String nombre = sc.nextLine();
+
+                    System.out.println("Ingresa tu apellido paterno");
+                    String apellido = sc.nextLine();
+
+                    System.out.println("Ingresa tu apellido materno");
+                    String apellidoM = sc.nextLine();
+
+                    System.out.println("Ingresa tu edad");
+                    int edad = sc.nextInt();
                 break;
                 case 2:  System.out.println("Programa para calcular volumen de dos figuras");
+                
                 break;
                 case 3: System.out.println("Salir");
+
                 break OUTER;
                 default: System.out.println("Opción inválida");
+
                 break;
         }
 }
@@ -28,12 +42,4 @@ public class Nuevas_Tecnologias{
 
 
     }
-}
-
-public class DatosPersonales{
-    Scanner datos = new Scanner(System.in);
-
-    System.out.println("Ingrese su/s nombre/s");
-    System.out.println("");
-
 }

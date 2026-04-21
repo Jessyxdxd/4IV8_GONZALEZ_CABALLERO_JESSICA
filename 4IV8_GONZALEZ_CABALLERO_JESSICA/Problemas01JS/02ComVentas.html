@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comisiones del Vendedor</title>
+    <link rel="stylesheet" href="./CSS/02ComVentas.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Comisiones del Vendedor</h2>
+    <p>Calcula el total con sueldo base + 10% de comisión por 3 ventas</p>
+
+    <form>
+        <label>Sueldo base:</label>
+        <input type="text" id="sueldo">
+
+        <label>Venta 1:</label>
+        <input type="text" id="venta1">
+
+        <label>Venta 2:</label>
+        <input type="text" id="venta2">
+
+        <label>Venta 3:</label>
+        <input type="text" id="venta3">
+
+        <div id="error" class="error"></div>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+        <button type="reset">Limpiar</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+</div>
+
+<script src="./JSProblemas/02ComVentas.js"></script>
+
+</body>
+</html>

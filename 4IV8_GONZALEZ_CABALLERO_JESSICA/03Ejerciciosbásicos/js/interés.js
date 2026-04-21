@@ -7,3 +7,15 @@ function validarn(e){
     var codigo = String.fromCharCode(teclado);
     return patron.test(codigo);
 }
+function interes(){
+    var valor = document.getElementById('cantidadi').value;
+    var interes = parseFloat(valor);
+    //10% anual
+    var subtotal = interes * 0.10;
+    var total = subtotal + interes;
+    document.getElementById('sueldoi').value = "$ " + total;
+} 
+function borrar(){
+    document.getElementById('sueldoi').value = " ";
+    document.getElementById('cantidadi').value = " ";
+}

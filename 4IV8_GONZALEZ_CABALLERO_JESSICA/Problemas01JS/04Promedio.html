@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calificación Final</title>
+    
+    <link rel="stylesheet" href="./CSS/03Desc15.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Calificación Final</h2>
+    <p>55% promedio parciales, 30% examen, 15% trabajo</p>
+
+    <form>
+        <label>Parcial 1:</label>
+        <input type="text" id="p1">
+
+        <label>Parcial 2:</label>
+        <input type="text" id="p2">
+
+        <label>Parcial 3:</label>
+        <input type="text" id="p3">
+
+        <label>Examen final:</label>
+        <input type="text" id="examen">
+
+        <label>Trabajo final:</label>
+        <input type="text" id="trabajo">
+
+        <div id="error" class="error"></div>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+        <button type="reset">Limpiar</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+</div>
+
+<script src="./JSProblemas/04Promedio.js"></script>
+
+</body>
+</html>

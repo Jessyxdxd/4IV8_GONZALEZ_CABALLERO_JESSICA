@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios de Algoritmia</title>
+
+    
+    <link rel="stylesheet" href="./CSSAlgoritmia/algoritmia.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="problema-container">
+        <h2>Problema 1</h2>
+        <p>Invierte el orden de palabras</p>
+
+        <input type="text" id="p1-input" placeholder="Ej: hola mundo prueba">
+        <br>
+        <button onclick="problema1()">Invertir palabras</button>
+
+        <pre id="p1-output">Esperando datos...</pre>
+    </div>
+
+  
+    <div class="problema-container">
+        <h2>Problema 2</h2>
+        <p>Producto escalar mínimo</p>
+
+        <table>
+            <tr>
+                <th>X</th><th>Y</th>
+            </tr>
+            <tr><td><input type="number" id="p2-x1"></td><td><input type="number" id="p2-y1"></td></tr>
+            <tr><td><input type="number" id="p2-x2"></td><td><input type="number" id="p2-y2"></td></tr>
+            <tr><td><input type="number" id="p2-x3"></td><td><input type="number" id="p2-y3"></td></tr>
+            <tr><td><input type="number" id="p2-x4"></td><td><input type="number" id="p2-y4"></td></tr>
+            <tr><td><input type="number" id="p2-x5"></td><td><input type="number" id="p2-y5"></td></tr>
+        </table>
+
+        <button onclick="problema2()">Calcular</button>
+
+        <pre id="p2-output">Esperando datos...</pre>
+    </div>
+
+     
+    <div class="problema-container">
+        <h2>Problema 3</h2>
+        <p>Palabra con más caracteres únicos</p>
+
+        <input type="text" id="p3-input" placeholder="Ej: CASA,PERRO,SOL">
+        <br>
+        <button onclick="problema3()">Calcular</button>
+
+        <pre id="p3-output">Esperando datos...</pre>
+    </div>
+
+</div>
+
+<!-- Conexión al JS -->
+<script src="./JSAlgoritmia/algoritmia.js"></script>
+
+</body>
+</html>

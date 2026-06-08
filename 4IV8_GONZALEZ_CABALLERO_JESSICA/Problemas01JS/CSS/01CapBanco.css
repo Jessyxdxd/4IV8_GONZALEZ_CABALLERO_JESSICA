@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: rgb(164, 71, 86);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body{
+    background-color: pink;
+}
+
+/* Contenedor principal */
+.container{
+    border: 7px solid rgb(255, 251, 225);
+    border-radius: 50px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: blanchedalmond;
+    width: 40%;
+}
+
+/* Formulario */
+form{
+    border: 4px solid rgb(255, 251, 225);
+    margin: 1rem auto;
+    border-radius: 20px;
+    padding: 2rem;
+    background-color: rosybrown;
+}
+
+/* Etiquetas */
+label{
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Inputs */
+input[type="text"]{
+    width: 80%;
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 251, 225);
+    outline: none;
+}
+
+/* Botones */
+button{
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(255, 251, 225);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: rgb(255, 228, 196);
+}
+
+/* Resultado */
+.resultado{
+    margin-top: 1.5rem;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Error */
+.error{
+    margin-top: 1rem;
+    color: red;
+    font-size: 14px;
+}

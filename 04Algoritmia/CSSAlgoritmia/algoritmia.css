@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+:root{
+    --bg:#1F1A2E;
+    --card:#2A233D;
+    --pink:#EB92A6;
+    --pink-soft:#FCCCC7;
+    --beige:#C09983;
+    --cream:#FFF6C1;
+    --ice:#DFFEFF;
+    --text:#F5EDF7;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background-color:var(--bg);
+    background-image:url("../img/fondo.png");
+    background-repeat:repeat;
+    background-size:180px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    font-family:Arial, sans-serif;
+    color:var(--text);
+    padding:2rem;
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+.problema-container{
+    background:rgba(42,35,61,.92);
+    border-radius:35px;
+    padding:2.5rem;
+    box-shadow:
+    0 0 25px rgba(235,146,166,.15),
+    0 20px 50px rgba(0,0,0,.45);
+    border:1px solid rgba(235,146,166,.25);
+}
+
+h2{
+    font-family:'Merriweather', serif;
+    color:var(--pink-soft);
+    font-size:1.6rem;
+    margin-bottom:0.5rem;
+}
+
+p{
+    font-size:1rem;
+    color:var(--ice);
+    margin-bottom:1.5rem;
+}
+
+input[type="text"],
+input[type="number"]{
+    width:100%;
+    padding:0.8rem 1rem;
+    background-color:rgba(31,26,46,0.6);
+    border:1px solid rgba(235,146,166,.3);
+    border-radius:12px;
+    color:white;
+    font-size:0.95rem;
+    outline:none;
+    transition:0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus{
+    border-color:var(--pink);
+    box-shadow:0 0 10px rgba(235,146,166,0.3);
+}
+
+input[type="text"]::placeholder{
+    color:rgba(245,237,247,0.4);
+}
+
+button{
+    display:block;
+    width:100%;
+    padding:1rem;
+    border:none;
+    border-radius:18px;
+    font-weight:bold;
+    font-size:1rem;
+    cursor:pointer;
+    margin-top:1.2rem;
+    margin-bottom:1.2rem;
+    transition:.3s;
+    text-align:center;
+    background:linear-gradient(135deg, var(--pink), var(--beige));
+    color:white;
+    box-shadow:0 8px 20px rgba(235,146,166,.25);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(235,146,166,.4);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+pre{
+    background-color:rgba(31,26,46,0.8);
+    border:1px dashed rgba(235,146,166,.3);
+    padding:1rem;
+    border-radius:12px;
+    font-family:monospace;
+    color:var(--cream);
+    font-size:0.95rem;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:1rem;
+}
+
+th{
+    font-family:'Merriweather', serif;
+    color:var(--pink-soft);
+    padding:0.5rem;
+    text-align:center;
+    font-size:1.1rem;
+}
+
+td{
+    padding:0.4rem;
+}
+
+td input[type="number"]{
+    text-align:center;
+}
+
+br{
+    display:none;
+}
+
+@media(max-width:768px){
+    body{
+        padding:1rem;
+    }
+
+    .problema-container{
+        padding:1.5rem;
+    }
+}

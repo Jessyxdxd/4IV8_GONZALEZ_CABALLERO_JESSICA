@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+:root{
+    --bg:#1F1A2E;
+    --card:#2A233D;
+    --pink:#EB92A6;
+    --pink-soft:#FCCCC7;
+    --beige:#C09983;
+    --cream:#FFF6C1;
+    --ice:#DFFEFF;
+    --text:#F5EDF7;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background-color:var(--bg);
+    background-image:url("../../img/fondo2.jpg");
+    background-size: 180px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    font-family:Arial, sans-serif;
+    color:var(--text);
+    padding:2rem;
+}
+
+.container-main{
+    width:100%;
+    max-width:900px;
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+nav{
+    background:rgba(42,35,61,.92);
+    border:1px solid rgba(235,146,166,.25);
+    border-radius:20px;
+    padding:1.5rem;
+    text-align:center;
+    font-family:'Merriweather', serif;
+    color:var(--pink-soft);
+    font-size:1.2rem;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.container-body{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+section, article, aside, footer{
+    background:rgba(42,35,61,.92);
+    border-radius:25px;
+    padding:2.5rem;
+    text-align:center;
+    box-shadow:
+    0 0 25px rgba(235,146,166,.15),
+    0 20px 50px rgba(0,0,0,.45);
+    border:1px solid rgba(235,146,166,.25);
+}
+
+h2{
+    font-family:'Merriweather', serif;
+    color:var(--pink-soft);
+    font-size:1.5rem;
+    font-weight:400;
+    line-height:1.4;
+}
+
+article h2, aside h2, footer h2{
+    color:var(--text);
+    font-size:1.2rem;
+}
+
+a{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    padding:1rem 2rem;
+    margin-top:1.5rem;
+    border-radius:18px;
+    background:linear-gradient(
+        135deg,
+        var(--pink),
+        var(--beige)
+    );
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(235,146,166,.25);
+}
+
+a:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(235,146,166,.4);
+}
+
+a:active{
+    transform:scale(.97);
+}
+
+@media(max-width:768px){
+    body{
+        padding:1rem;
+    }
+    
+    .container-main{
+        gap:1.5rem;
+    }
+
+    nav{
+        padding:1rem;
+        font-size:1rem;
+    }
+
+    section, article, aside, footer{
+        padding:1.5rem;
+    }
+
+    h2{
+        font-size:1.2rem;
+    }
+
+    article h2, aside h2, footer h2{
+        font-size:1rem;
+    }
+    
+    a{
+        width:100%;
+    }
+}

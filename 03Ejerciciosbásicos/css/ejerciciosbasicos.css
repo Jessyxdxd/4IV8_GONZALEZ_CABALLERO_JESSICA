@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+:root{
+    --bg:#1F1A2E;
+    --card:#2A233D;
+    --card2:#3A3154;
+    --pink:#EB92A6;
+    --pink-soft:#FCCCC7;
+    --beige:#C09983;
+    --cream:#FFF6C1;
+    --ice:#DFFEFF;
+    --text:#F5EDF7;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background-color:var(--bg);
+    background-image:url("../../img/fondo2.jpg");
+    background-repeat:repeat;
+    background-size:180px;
+    font-family:Arial, sans-serif;
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:2rem;
+}
+
+.Ejercicio1{
+    width:100%;
+    max-width:850px;
+    background:rgba(42,35,61,.92);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(235,146,166,.25);
+    border-radius:35px;
+    padding:2.5rem;
+    box-shadow:
+    0 0 25px rgba(235,146,166,.15),
+    0 20px 50px rgba(0,0,0,.45);
+    position:relative;
+}
+
+.Ejercicio1::before{
+    content:"💫";
+    position:absolute;
+    top:20px;
+    right:25px;
+    color:var(--pink);
+    font-size:1.5rem;
+}
+
+.Ejercicio1::after{
+    content:"💫";
+    position:absolute;
+    bottom:20px;
+    left:25px;
+    color:var(--pink-soft);
+    font-size:1.2rem;
+}
+
+label{
+    display:block;
+    text-align:center;
+    font-family:'Merriweather', serif;
+    color:var(--pink-soft);
+    font-size:2rem;
+    margin-bottom:2rem;
+    letter-spacing:1px;
+}
+
+.container-table{
+    background:rgba(58,49,84,.55);
+    border-radius:25px;
+    padding:2rem;
+    border:1px solid rgba(252,204,199,.15);
+}
+
+.table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 1.2rem;
+}
+
+.table td{
+    padding:.5rem;
+}
+
+.table td:first-child{
+    color:var(--pink-soft);
+    font-weight:500;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:16px;
+    background:#211B31;
+    color:white;
+    font-size:1rem;
+    box-shadow:inset 0 0 0 2px rgba(235,146,166,.15);
+    transition:.3s;
+}
+
+input[type="text"]:focus{
+    outline:none;
+    box-shadow:
+    inset 0 0 0 2px var(--pink),
+    0 0 15px rgba(235,146,166,.3);
+}
+
+#sueldoi{
+    background:#252A40;
+    color:var(--ice);
+    font-weight:bold;
+}
+
+input[type="button"]{
+    border:none;
+    border-radius:18px;
+    padding:14px 25px;
+    cursor:pointer;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        var(--pink),
+        var(--beige)
+    );
+    transition:.35s;
+    box-shadow:0 8px 20px rgba(235,146,166,.25);
+}
+
+input[type="button"]:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(235,146,166,.4);
+}
+
+input[type="button"]:active{
+    transform:scale(.96);
+}
+
+@media(max-width:700px){
+
+    .Ejercicio1{
+        padding:1.5rem;
+    }
+
+    .table,
+    .table tr,
+    .table td{
+        display:block;
+        width:100%;
+    }
+
+    .table td{
+        text-align:center;
+    }
+
+    label{
+        font-size:1.5rem;
+    }
+}

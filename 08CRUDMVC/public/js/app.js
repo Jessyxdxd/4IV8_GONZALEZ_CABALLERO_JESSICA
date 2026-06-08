@@ -9,18 +9,18 @@ const apiMetodo = document.getElementById('api-metodo');
 const apiUrl = document.getElementById('api-url');
 const apiCodigo = document.getElementById('api-codigo');
 const notificacionDiv = document.getElementById('notificacion');
+const URL_BACKEND = 'http://localhost:3000';
 
 async function fetchAPI(url, opciones = {}) {
     const method = opciones.method || 'GET';
 
     apiMetodo.textContent = method;
     apiMetodo.className = `badge badge-${method.toLowerCase()}`;
-    apiUrl.textContent = url;
-    apiCodigo.textContent = '...';
+    apiUrl.textContent = `${URL_BACKEND}${url}`;
     apiCodigo.className = 'badge badge-neutral';
 
     try {
-        const respuesta = await fetch(url, opciones);
+        const respuesta = await fetch(`${URL_BACKEND}${url}`, opciones); 
         apiCodigo.textContent = `${respuesta.status}`;
         apiCodigo.className = `badge ${respuesta.ok ? 'badge-success' : 'badge-error'}`;
 
@@ -38,15 +38,11 @@ async function fetchAPI(url, opciones = {}) {
     }
 }
 
-// ==================================================SS==========
-// CONFIGURACIÓN DE NOTIFICACIONES CON SWEETALERT2
-// ============================================================
 const swalEstilo = Swal.mixin({
     background: '#2A233D',
     color: '#F5EDF7',
     confirmButtonColor: '#EB92A6',
     cancelButtonColor: '#C09983',
-    backdrop: 'rgba(31, 26, 46, 0.8)',
     customClass: {
         popup: 'borde-magico' 
     }
@@ -84,7 +80,7 @@ function escapeHtml(texto) {
     return div.innerHTML;
 }
 
-// Convertidor Helper para Archivos Binarios a Base64 Strings
+
 function archivoABase64(archivo) {
     return new Promise((resolve, reject) => {
         const lector = new FileReader();
@@ -102,9 +98,6 @@ function formatearFechaHora(fechaISO) {
     });
 }
 
-// ============================================================
-// 2. MÓDULO DE USUARIOS
-// ============================================================
 const formUsuario = document.getElementById('form-usuario');
 const inputUsuarioId = document.getElementById('usuario-id');
 const inputUsuarioNombre = document.getElementById('usuario-nombre');
@@ -207,14 +200,14 @@ formUsuario.addEventListener('submit', async (e) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            mostrarNotificacion('Usuario actualizado', 'exito');
+            mostrarNotificacion('Usuario actualizado', 'success');
         } else {
             await fetchAPI('/api/usuarios', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            mostrarNotificacion('Usuario creado', 'exito');
+            mostrarNotificacion('Usuario creado', 'success');
         }
         limpiarFormUsuario();
         cargarUsuarios();
@@ -241,15 +234,26 @@ async function editarUsuario(id) {
 }
 
 function confirmarEliminarUsuario(id, nombre) {
-    if (confirm(`¿Eliminar a "${nombre}" y todas sus compras?`)) {
-        eliminarUsuario(id);
-    }
+    swalEstilo.fire({
+        title: '¿Eliminar usuario?',
+        text: `¿Estás segura de eliminar a "${nombre}" y todas sus compras?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        toast: false,
+        position: 'center'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarUsuario(id);
+        }
+    });
 }
 
 async function eliminarUsuario(id) {
     try {
         await fetchAPI(`/api/usuarios/${id}`, { method: 'DELETE' });
-        mostrarNotificacion('Usuario eliminado', 'exito');
+        mostrarNotificacion('Usuario eliminado', 'success');
         if (inputUsuarioId.value === String(id)) limpiarFormUsuario();
         cargarUsuarios();
         cargarSelectUsuarios();
@@ -264,12 +268,29 @@ async function verComprasUsuario(id) {
         const resp = await fetchAPI(`/api/compras/usuario/${id}`);
         const { usuario, compras, total_compras, total_gastado } = resp.data;
 
-        let mensaje = `${usuario.nombre} tiene ${total_compras} compra(s).\nTotal gastado: $${total_gastado}\n\n`;
+
+        let listaComprasHTML = '<ul style="text-align: left; list-style: none; padding: 0;">';
         compras.forEach(c => {
-            mensaje += `- ${c.producto} x${c.cantidad} = $${parseFloat(c.total).toFixed(2)}\n`;
+            listaComprasHTML += `<li style="margin-bottom: 5px;">🔮 <b>${c.producto}</b> x${c.cantidad} = <span style="color: #EB92A6;">$${parseFloat(c.total).toFixed(2)}</span></li>`;
+        });
+        listaComprasHTML += '</ul>';
+
+        swalEstilo.fire({
+            title: `Historial de ${escapeHtml(usuario.nombre)}`,
+            html: `
+                <div style="margin-bottom: 15px;">
+                    <p><b>Compras registradas:</b> ${total_compras}</p>
+                    <p><b>Total gastado:</b> <span style="color: #FFF6C1; font-size: 1.2em;">$${total_gastado}</span></p>
+                </div>
+                <hr style="border-color: #3d3556; margin: 15px 0;">
+                ${compras.length > 0 ? listaComprasHTML : '<p>No registra compras aún.</p>'}
+            `,
+            icon: 'info',
+            toast: false,
+            position: 'center',
+            confirmButtonText: 'Entendido'
         });
 
-        alert(mensaje);
     } catch (error) {
         mostrarNotificacion(error.message, 'error');
     }
@@ -382,14 +403,14 @@ formProducto.addEventListener('submit', async (e) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            mostrarNotificacion('Producto actualizado', 'exito');
+            mostrarNotificacion('Producto actualizado', 'success');
         } else {
             await fetchAPI('/api/productos', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            mostrarNotificacion('Producto creado', 'exito');
+            mostrarNotificacion('Producto creado', 'success');
         }
         limpiarFormProducto();
         cargarProductos();
@@ -416,9 +437,20 @@ async function editarProducto(id) {
 }
 
 function confirmarEliminarProducto(id, nombre) {
-    if (confirm(`¿Eliminar "${nombre}"?\nSi tiene compras asociadas, no se podrá eliminar.`)) {
-        eliminarProducto(id);
-    }
+    swalEstilo.fire({
+        title: '¿Eliminar producto?',
+        text: `¿Deseas eliminar "${nombre}"? Si tiene compras asociadas, la base de datos no lo permitirá.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        toast: false,
+        position: 'center'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarProducto(id);
+        }
+    });
 }
 
 async function eliminarProducto(id) {
@@ -578,9 +610,20 @@ formCompra.addEventListener('submit', async (e) => {
 });
 
 function confirmarEliminarCompra(id) {
-    if (confirm('¿Eliminar esta compra?')) {
-        eliminarCompra(id);
-    }
+    swalEstilo.fire({
+        title: '¿Anular compra?',
+        text: "¿Seguro de que deseas eliminar este registro de compra?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Conservar',
+        toast: false,
+        position: 'center'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarCompra(id);
+        }
+    });
 }
 
 async function eliminarCompra(id) {
